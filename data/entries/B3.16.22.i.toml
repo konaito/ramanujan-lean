@@ -1,0 +1,38 @@
+id = "B3.16.22.i"
+title = "φ(q) の積表示"
+
+[source]
+book = "Berndt, Ramanujan's Notebooks, Part III (Springer, 1991)"
+part = 3
+chapter = 16
+chapter_basis = "ページ位置から推定。原本で未確認"
+entry = "22(i)"
+page = 36
+citations = ["Rajkhowa, Saikia, arXiv:2305.14988, eq. (1.4)"]
+original_checked = false
+
+[statement]
+latex = '\varphi(q) := f(q,q) = \sum_{t=-\infty}^{\infty} q^{t^2} = \frac{(-q;-q)_\infty}{(q;-q)_\infty}'
+domain = "q ∈ ℂ, |q| < 1"
+meaning = "f(q,q) の積表示。"
+known_proofs = ["Entry 19 の特別な場合"]
+
+[lean]
+file = ""
+theorems = []
+reuses = []
+formulation_notes = ""
+
+[status]
+state = "registered"
+depends_on = ["B3.16.19"]
+
+[semantic_audit]
+verdict = "pending"
+author = ""
+reviewer = ""
+notes = ""
+
+[cost]
+measured = false
+notes = ""

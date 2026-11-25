@@ -1,0 +1,22 @@
+name = "RamanujanLean"
+version = "0.1.0"
+defaultTargets = ["RamanujanLean"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+
+# Mathlib is pinned to the version used by invitation-to-qseries-lean,
+# so both share one Mathlib build.
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "v4.28.0"
+
+[[require]]
+name = "qseries_formalization"
+git = "https://github.com/xiangyazi24/invitation-to-qseries-lean"
+rev = "e8c905a0f6b3e7ddcb32fefeea79f7bf51ef3b10"
+
+[[lean_lib]]
+name = "RamanujanLean"
