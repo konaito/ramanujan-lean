@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # lake build, then axiom-audit: every declaration under RamanujanLean may use
+      # only propext, Classical.choice and Quot.sound. This rejects sorryAx,
+      # Lean.ofReduceBool (native_decide) and home-made axioms, including ones
+      # reached through imports from dependencies.
+      - uses: leanprover/lean-action@v1.7.1
+        with:
+          axiom-audit: "true"
+          axiom-audit-allow: "propext,Classical.choice,Quot.sound"
+
+      - uses: astral-sh/setup-uv@v10.4.0
+
+      # Every ledger entry must be well formed, and every theorem it names must
+      # exist and use only the allowed axioms.
+      - name: Check ledger
+        run: uv run scripts/ledger.py build
+
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: ledger-db
+          path: data/ledger.db

@@ -1,0 +1,48 @@
+id = "B3.16.22.iii"
+title = "f(-q) = (q;q)_∞（Euler の五角数定理）"
+
+[source]
+book = "Berndt, Ramanujan's Notebooks, Part III (Springer, 1991)"
+part = 3
+chapter = 16
+chapter_basis = "ページ位置から推定（Part III の最初の章が第16章）。原本で未確認"
+entry = "22(iii)"
+page = 36
+citations = ["Rajkhowa, Saikia, arXiv:2305.14988, eq. (1.6)。Berndt Part III p.36 Entry 22(i)-(iii) として引用"]
+original_checked = false
+
+[statement]
+latex = 'f(-q) := f(-q,-q^2) = \sum_{t=-\infty}^{\infty} (-1)^t q^{t(3t-1)/2} = (q;q)_\infty'
+domain = "q ∈ ℂ, |q| < 1"
+meaning = "Ramanujan の一般テータ関数 f(a,b) に a=-q, b=-q² を入れた級数が、無限積 ∏_{n≥1}(1-q^n) に等しい。"
+known_proofs = ["Euler の五角数定理。Berndt Part III は Entry 19（Jacobi の三重積）の特別な場合として扱う"]
+
+[lean]
+file = "RamanujanLean/Berndt/Part3/Ch16/Entry22.lean"
+theorems = [
+  "RamanujanLean.Berndt.Part3.Ch16.entry22_iii",
+  "RamanujanLean.Berndt.Part3.Ch16.entry22_iii_ramanujanTheta",
+]
+reuses = ["QseriesFormalization.PartI.Ch04.eulerPentagonalInfiniteProduct_eq_tsum'"]
+formulation_notes = "級数と積はどちらも HasSum と HasProd で書き、収束と値を同時に主張する。tsum だけの等式にすると、収束しないとき 0 = 0 で通ってしまうため。"
+
+[status]
+state = "proved"
+depends_on = []
+
+[semantic_audit]
+verdict = "match"
+author = "claude-code:32bcf253"
+reviewer = "semantic-auditor (Specter child of ramanujan-ce, 2026-11-26)"
+notes = """
+原典側は arXiv:2305.14988 v1 Section 1 の (1.1)(1.2)(1.6) で確かめた（二次引用）。Berndt の本そのものは見ていない。
+1. 定義域: 仮定は ‖q‖<1 のみ。a=-q, b=-q² で |ab|=|q|³ なので |ab|<1 と同値。指数は非負かつ 2 で割り切れるので ℤ の / と zpow は普通の冪と一致する。t=±1,±2 の項を example で確かめた。
+2. 仮定: 原典より強くなく、q=0 で満たせる。#print axioms は propext, Classical.choice, Quot.sound のみ。
+3. すり替え: ℤ 上の HasSum と ℕ 上の HasProd は無条件収束で、ℂ では絶対収束と同値。(q;q)_∞ の添字も一致する。HasProd があるので tprod の規定値 1 で通る道はない。
+4. 依存: 命題に QseriesFormalization の定数は現れない。依存は証明の中だけ。
+注記: entry22_iii_ramanujanTheta 単体は tsum の等式で、収束の主張は entry22_iii にある。
+"""
+
+[cost]
+measured = false
+notes = "最初のセッションは環境構築と同時に進めたため、この公式だけのトークン数は分けて測っていない。"
