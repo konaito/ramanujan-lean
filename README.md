@@ -41,3 +41,7 @@ uv run scripts/ledger.py build  # 台帳の検査と data/ledger.db の生成
 ## 原典の扱い
 
 TIFR はノートの全巻の著作権を持つと表明しているため、原典の画像はこのリポジトリに置きません。台帳には Berndt の巻・章・Entry 番号とページ番号だけを記録します。
+
+## ライセンス
+
+Apache-2.0 です。全文は [LICENSE](LICENSE) にあります。
