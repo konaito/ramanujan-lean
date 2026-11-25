@@ -19,14 +19,14 @@ B<巻>.<章>.<Entry>[.<小項目>]
 | registered | 原典の位置と LaTeX の命題を登録した |
 | formalized | Lean の命題を書いた。証明はまだない |
 | proved | Lean の証明が通り、axiom-audit と台帳の検査を通った |
-| verified | proved に加え、書き手と別の監査者が原典との意味の一致を確かめた |
+| verified | proved に加え、書き手と別の監査者が原典との意味の一致を確かめ、原本で式を確かめた（`original_checked = true`） |
 | rejected | 原典の誤記、または成り立たない命題と判断した。理由を notes に書く |
 
 `scripts/ledger.py` は、proved と verified の項目について次を確かめます。
 
 - `[lean].theorems` に書いた定理がすべて存在する
 - その定理が propext、Classical.choice、Quot.sound 以外の公理を使っていない
-- verified の項目は `semantic_audit.verdict = "match"` で、監査者が書き手と別である
+- verified の項目は `semantic_audit.verdict = "match"` で、監査者が書き手と別であり、`source.original_checked = true` である
 
 ## 品質の決まり
 

@@ -6,7 +6,7 @@
 
 | ID | 内容 | 状態 |
 |---|---|---|
-| B3.16.22.iii | f(-q) = (q;q)_∞ | proved（意味の監査は未実施） |
+| B3.16.22.iii | f(-q) = (q;q)_∞ | proved（意味の監査は match。原本での確認待ち） |
 | B3.16.19 | Jacobi の三重積 | registered |
 | B3.16.22.i | φ(q) の積表示 | registered |
 | B3.16.22.ii | ψ(q) の積表示 | registered |

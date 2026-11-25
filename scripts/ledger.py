@@ -91,6 +91,8 @@ def validate(entries: list[dict]) -> list[str]:
                 errors.append(f"{p}: verified needs semantic_audit.verdict = match")
             if not sa.get("reviewer") or sa.get("reviewer") == sa.get("author"):
                 errors.append(f"{p}: verified needs a reviewer different from the author")
+            if not e.get("source", {}).get("original_checked"):
+                errors.append(f"{p}: verified needs source.original_checked = true")
         if verdict == "mismatch" and state in ("proved", "verified"):
             errors.append(f"{p}: statement judged mismatch but state is {state}")
         for dep in e.get("status", {}).get("depends_on", []):

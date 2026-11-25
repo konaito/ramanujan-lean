@@ -31,10 +31,17 @@ state = "proved"
 depends_on = []
 
 [semantic_audit]
-verdict = "pending"
+verdict = "match"
 author = "claude-code:32bcf253"
-reviewer = ""
-notes = ""
+reviewer = "semantic-auditor (Specter child of ramanujan-ce, 2026-11-26)"
+notes = """
+原典側は arXiv:2305.14988 v1 Section 1 の (1.1)(1.2)(1.6) で確かめた（二次引用）。Berndt の本そのものは見ていない。
+1. 定義域: 仮定は ‖q‖<1 のみ。a=-q, b=-q² で |ab|=|q|³ なので |ab|<1 と同値。指数は非負かつ 2 で割り切れるので ℤ の / と zpow は普通の冪と一致する。t=±1,±2 の項を example で確かめた。
+2. 仮定: 原典より強くなく、q=0 で満たせる。#print axioms は propext, Classical.choice, Quot.sound のみ。
+3. すり替え: ℤ 上の HasSum と ℕ 上の HasProd は無条件収束で、ℂ では絶対収束と同値。(q;q)_∞ の添字も一致する。HasProd があるので tprod の規定値 1 で通る道はない。
+4. 依存: 命題に QseriesFormalization の定数は現れない。依存は証明の中だけ。
+注記: entry22_iii_ramanujanTheta 単体は tsum の等式で、収束の主張は entry22_iii にある。
+"""
 
 [cost]
 measured = false

@@ -126,7 +126,8 @@ theorem entry22_iii (q : ℂ) (hq : ‖q‖ < 1) :
     funext (ramanujanThetaTerm_neg_neg_sq q)]
   exact h2
 
-/-- Entry 22(iii) in Ramanujan's notation: `f(-q, -q²) = (q; q)_∞` for `|q| < 1`. -/
+/-- Entry 22(iii) in Ramanujan's notation: `f(-q, -q²) = (q; q)_∞` for `|q| < 1`.
+This is an equation of `tsum` and `tprod`; convergence is stated in `entry22_iii`. -/
 theorem entry22_iii_ramanujanTheta (q : ℂ) (hq : ‖q‖ < 1) :
     ramanujanTheta (-q) (-q ^ 2) = ∏' n : ℕ, (1 - q ^ (n + 1)) :=
   (entry22_iii q hq).2.2.tsum_eq
