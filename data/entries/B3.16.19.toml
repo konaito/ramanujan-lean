@@ -27,6 +27,7 @@ reuses = [
   "QseriesFormalization.PartI.Ch02.jacobiTripleProduct（q, z 形式。q² = ab、z = a/q と置いて a, b 形式へ直した）",
   "QseriesFormalization.PartI.Ch02.jacobiInfiniteProduct_eq_tprod_components",
   "QseriesFormalization.PartI.Ch02.hasSum_jacobiInfiniteSeries_terms",
+  "QseriesFormalization.PartI.Ch02.summable_norm_mul_geometric_complex",
 ]
 formulation_notes = """
 仮定は ‖ab‖ < 1 だけで、原典にない仮定は足していない。
