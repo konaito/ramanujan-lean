@@ -18,18 +18,31 @@ meaning = "f(q,q) の積表示。"
 known_proofs = ["Entry 19 の特別な場合"]
 
 [lean]
-file = ""
-theorems = []
-reuses = []
-formulation_notes = ""
+file = "RamanujanLean/Berndt/Part3/Ch16/Entry22.lean"
+theorems = [
+  "RamanujanLean.Berndt.Part3.Ch16.entry22_i",
+  "RamanujanLean.Berndt.Part3.Ch16.entry22_i_ramanujanTheta",
+]
+reuses = [
+  "RamanujanLean.Berndt.Part3.Ch16.entry19（a = b = q と置いた）",
+  "QseriesFormalization.PartI.Ch04.eulerPentagonalInfiniteProduct_ne_zero（(q⁴;q⁴)_∞ ≠ 0。Euler の恒等式 (-q;q²)_∞(q;q²)_∞(-q²;q²)_∞ = 1 で割るために使った）",
+  "QseriesFormalization.PartI.Ch02.summable_norm_mul_geometric_complex（∏(1 ± c rⁿ) と ∏(1 ± r^{n+1}) の収束）",
+]
+formulation_notes = """
+仮定は ‖q‖ < 1 だけで、原典にない仮定は足していない。
+積は (x;r)_∞ = ∏_{n≥0}(1 - x rⁿ) の約束で、(-q;-q)_∞ を ∏(1 - (-q)^{n+1})、(q;-q)_∞ を ∏(1 - q(-q)ⁿ) と書いた。底が -q のまま見える形にし、q^{2n+1} などへ展開した式には置き換えていない。
+積はそれぞれ HasProd で、級数は HasSum で書き、収束と値を同時に主張する。Lean では x / 0 = 0 なので、分母の積 (q;-q)_∞ が 0 でないことも結論に入れた。分母が 0 でないことを、命題だけから読み取れるようにするため。
+級数は2つ主張する。f(q,q) の項 ramanujanThetaTerm q q t の ℤ 上の和と、Σ_{t∈ℤ} q^{t²} の和で、どちらも同じ値に収束する。
+entry22_i_ramanujanTheta 単体は tsum の等式で、収束の主張は entry22_i にある。
+"""
 
 [status]
-state = "registered"
+state = "proved"
 depends_on = ["B3.16.19"]
 
 [semantic_audit]
 verdict = "pending"
-author = ""
+author = "claude-code:entry22ab@session-f55922ba"
 reviewer = ""
 notes = ""
 
