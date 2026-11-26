@@ -18,18 +18,31 @@ meaning = "Ramanujan の一般テータ関数は3つの無限積の積に等し�
 known_proofs = ["Jacobi の三重積の恒等式"]
 
 [lean]
-file = ""
-theorems = []
-reuses = ["QseriesFormalization.PartI.Ch02.jacobiTripleProduct（q, z 形式。a, b 形式への変換が要る）"]
-formulation_notes = ""
+file = "RamanujanLean/Berndt/Part3/Ch16/Entry19.lean"
+theorems = [
+  "RamanujanLean.Berndt.Part3.Ch16.entry19",
+  "RamanujanLean.Berndt.Part3.Ch16.entry19_ramanujanTheta",
+]
+reuses = [
+  "QseriesFormalization.PartI.Ch02.jacobiTripleProduct（q, z 形式。q² = ab、z = a/q と置いて a, b 形式へ直した）",
+  "QseriesFormalization.PartI.Ch02.jacobiInfiniteProduct_eq_tprod_components",
+  "QseriesFormalization.PartI.Ch02.hasSum_jacobiInfiniteSeries_terms",
+  "QseriesFormalization.PartI.Ch02.summable_norm_mul_geometric_complex",
+]
+formulation_notes = """
+仮定は ‖ab‖ < 1 だけで、原典にない仮定は足していない。
+3つの積は (x;q)_∞ = ∏_{n≥0}(1 - x qⁿ) の約束で、∏(1 + a(ab)ⁿ)、∏(1 + b(ab)ⁿ)、∏(1 - (ab)^{n+1}) と書いた。n = 0 の因子は (ab)⁰ = 1 で、ab = 0 のときも Lean の 0⁰ = 1 と一致する。
+積はそれぞれ HasProd で、級数は HasSum で書き、収束と値を同時に主張する。tsum だけの等式にすると、収束しないとき 0 = 0 で通ってしまうため。
+依存先の jacobiTripleProduct は z ≠ 0 を仮定する。ab ≠ 0 のときは q² = ab となる q を取り、z = a/q と置いて使った。ab = 0 のときは依存先を使わず、f(a,b) = 1 + a + b と積の値 (1 + a)(1 + b)·1 を直接計算した。
+"""
 
 [status]
-state = "registered"
+state = "proved"
 depends_on = []
 
 [semantic_audit]
 verdict = "pending"
-author = ""
+author = "claude-code:entry19@session-f55922ba"
 reviewer = ""
 notes = ""
 
